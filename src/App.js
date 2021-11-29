@@ -1,25 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./index.css"
 
-function App() {
+
+export default function App() {
+  const emojicollecion = {
+    "😊": "Smiling Emoji",
+    "😂": "Laughining Emoji",
+    "😍": "Loving Emoji",
+    "😎": "Cool Emoji",
+    "😔": "Sad Emoji",
+    "😭": "Crying Emoji",
+    "🐵": "Monkey Emoji",
+    "🗣": "Speaking Head"
+  };
+
+  const [emoji, setEmoji] = useState("");
+  const [meaning, setMeaning] = useState("Result will Appear Here");
+
+  const emojis = Object.keys(emojicollecion);
+
+  function handleChange(e) {
+    let inputEmoji = e.target.value;
+    setEmoji(inputEmoji);
+
+    if (emojicollecion[inputEmoji]) {
+      setMeaning(emojicollecion[inputEmoji]);
+    } else {
+      setMeaning("Oops..! Emoji is Not present in Database");
+    }
+  }
+
+  function emojiClickHandler(e) {
+    setMeaning(emojicollecion[e]);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <input
+        value={emoji}
+        onChange={handleChange}
+        placeholder="Insert an Emoji to Know Its Meaning"
+        style={{
+          fontSize: "20px",
+          height: "30px",
+          width: "80vw",
+          textAlign: "center"
+        }}
+      />
+      <h3>{meaning}</h3>
+
+      {emojis.map((e) => (
+        <span
+          key={e}
+          onClick={() => emojiClickHandler(e)}
+          style={{ fontSize: "30px", margin: "5px", cursor: "pointer" }}
         >
-          Learn React
-        </a>
-      </header>
+          {e}
+        </span>
+      ))}
     </div>
   );
 }
-
-export default App;
