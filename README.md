@@ -1,7 +1,7 @@
 # EmojiPedia App
 By prajwal zingare
 
- ![prajwal](https://img.shields.io/badge/Prajwal--Zingare-JS--Devloper-green)
+ ![prajwal](https://img.shields.io/badge/Prajwal--Zingare-JS--Developer-green)
 
 ---
 ## This is anEmojiPedia App made with React.
